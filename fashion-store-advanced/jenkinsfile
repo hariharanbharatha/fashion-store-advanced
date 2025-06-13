@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/hariharanbharatha/fashion-store-advanced.git'
+                git branch: 'main',
+        url: 'https://github.com/hariharanbharatha/fashion-store-advanced.git'
             }
         }
         stage('Build Docker Image') {
