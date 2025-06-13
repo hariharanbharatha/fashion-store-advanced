@@ -4,21 +4,19 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/hariharanbharatha/fashion-store-advanced.git'
+                git branch: 'main', url: 'https://github.com/hariharanbharatha/fashion-store-advanced.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                dir('fashion-store-advanced') {
-                    sh 'docker build -t fashion-store-app .'
-                }
+                sh 'docker build -t fashion-store-advanced .'
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 3000:3000 --name fashion-store-container fashion-store-app'
+                sh 'docker run -d -p 3000:3000 fashion-store-advanced'
             }
         }
     }
